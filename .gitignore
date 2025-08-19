@@ -1,8 +1,9 @@
+!E:/Programs/GitHub/RobotMovement/src_codes/Phase2/src/phase2robot/mobilefrontend/**
 devel/
 logs/
-# build/
+build/
 bin/
-# lib/
+lib/
 install/
 msg_gen/
 srv_gen/

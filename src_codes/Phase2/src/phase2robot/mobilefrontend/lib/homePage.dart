@@ -64,6 +64,7 @@ class _HomepageState extends State<Homepage> {
                           context.read<TextProvider>().setChannel(
                             updatedChannel,
                           );
+                          context.read<TextProvider>().setChannelChecker(checker);
                           if (checker) {
                             setState(() {
                               connect = true;
@@ -126,7 +127,7 @@ class _HomepageState extends State<Homepage> {
                 ),
               ),
               onPressed: () {
-                if (connect) {
+                if (context.read<TextProvider>().checker) {
                   context.read<TextProvider>().setText(_controller.text);
                   Navigator.of(
                     context,

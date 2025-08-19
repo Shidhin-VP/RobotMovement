@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lottie/lottie.dart';
+import 'package:mobilefrontend/homePage.dart';
 import 'package:mobilefrontend/textProvider.dart';
 import 'package:provider/provider.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
@@ -85,6 +86,22 @@ class _ConnectionpageState extends State<Connectionpage> {
         child: Icon(Icons.send_outlined),
       ),
       appBar: AppBar(
+        actions: [
+          IconButton(
+            color: Colors.redAccent,
+            onPressed: () {
+              channel.sink.close();
+              context.read<TextProvider>().setChannelChecker(false);
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Center(child: Text("Session Closed"))),
+              );
+              Navigator.of(
+                context,
+              ).pushReplacement(MaterialPageRoute(builder: (_) => Homepage()));
+            },
+            icon: Icon(Icons.close_rounded, color: Colors.redAccent),
+          ),
+        ],
         title: Text(
           "Controller",
           style: TextStyle(fontSize: 20, fontFamily: "Federant"),
