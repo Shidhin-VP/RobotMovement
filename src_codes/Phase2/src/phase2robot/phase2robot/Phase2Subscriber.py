@@ -24,7 +24,7 @@ class Phase1Sub(Node):
         print(f"\033[92m{command.get(value)}\033[0m")
 
     def listner_callback(self,msg):
-        self.get_logger().info(f"Command Received, {msg.data}")
+        self.get_logger().info(f"\033[1;96mCommand Received.\033[0m")
 
         if msg.data!="0":
             choice,corrd=msg.data.split("|")

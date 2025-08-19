@@ -20,7 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'pub2_sub: phase2robot.Phase2Subscriber:main',
+            'pub2_sub= phase2robot.Phase2Subscriber:main',
         ],
     },
 )
