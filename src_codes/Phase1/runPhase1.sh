@@ -10,12 +10,14 @@ open_native_ubuntu_terminal() {
         sudo apt install -y gnome-terminal
     fi
     echo "Running Phase 1"
-    gnome-terminal -- bash -c "$runPUb"
+    colcon build
+    gnome-terminal -- bash -c "$runPub"
     gnome-terminal -- bash -c "$runSub"
 }
 
 open_wsl_terminal(){
     echo "Running Phase 1"
+    colcon build
     cmd.exe /c start wsl -e bash -c "$runPub"
     cmd.exe /c start wsl -e bash -c "$runSub"
 }

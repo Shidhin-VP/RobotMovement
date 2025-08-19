@@ -21,6 +21,7 @@ src_codes/Phase1/log/
 # Example .gitignore entries
 src_codes/Phase1/log/latest
 src_codes/Phase1/log/latest_build/
+src_codes/Phase1/install/
 
 
 
