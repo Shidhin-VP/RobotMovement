@@ -1,5 +1,7 @@
 devel/
 logs/
+log/
+/latest_build/
 build/
 bin/
 lib/
@@ -68,3 +70,4 @@ CATKIN_IGNORE
 
 
 !/src_codes/Phase2/src/phase2robot/mobilefrontend/**
+!/src_codes/Phase3/src/phase3srv/src/pahse3cliser/phase3frontend/**
