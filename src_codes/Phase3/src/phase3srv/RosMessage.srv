@@ -1,0 +1,8 @@
+string command
+int64 x
+int64 y
+int6 z
+int w
+---
+bool success
+string message
