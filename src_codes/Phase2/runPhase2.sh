@@ -31,5 +31,7 @@ if grep -qEi "Microsoft|WSL" /proc/version;then
 else
     echo "Running Phase 2"
     echo "Running on Native Linux"
+    echo "Enter  Your IP Address to Your Phone"
+    hostname -I
     open_native_ubuntu_terminal
 fi
