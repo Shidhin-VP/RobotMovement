@@ -10,8 +10,8 @@ open_native_ubuntu_terminal(){
         sudo apt install -y gnome-terminal
     fi
     colcon build
-    gnome-terminal --bash -c "$runSocket"
-    gnome-terminal --bash -c "$runSub"
+    gnome-terminal -- bash -c "$runSocket"
+    gnome-terminal -- bash -c "$runSub"
 }
 
 open_wsl_terminal(){
