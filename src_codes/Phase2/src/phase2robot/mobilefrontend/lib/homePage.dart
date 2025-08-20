@@ -64,11 +64,10 @@ class _HomepageState extends State<Homepage> {
                           context.read<TextProvider>().setChannel(
                             updatedChannel,
                           );
-                          context.read<TextProvider>().setChannelChecker(checker);
-                          if (checker) {
-                            setState(() {
-                              connect = true;
-                            });
+                          context.read<TextProvider>().setChannelChecker(
+                            checker,
+                          );
+                          if (context.read<TextProvider>().checker) {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 backgroundColor: Colors.lightGreenAccent,
@@ -83,9 +82,6 @@ class _HomepageState extends State<Homepage> {
                               ),
                             );
                           } else {
-                            setState(() {
-                              connect = false;
-                            });
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 backgroundColor: Colors.orangeAccent,
