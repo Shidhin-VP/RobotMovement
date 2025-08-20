@@ -23,10 +23,10 @@ open_wsl_terminal(){
 if grep -qEi "Microsoft|WSL" /proc/version;then
     echo "Running Phase 2"
     echo "Running on WSL"
-    ip=$(hostname -I)
     echo "Choose Your Correct Windows IP Address to Enter in Mobile Application"
     cmd.exe /c IPConfig | grep "IPv4"
-    powershell.exe -Command "Start-Process powershell -ArgumentList 'netsh interface portproxy add v4tov4 listenport=9090 listenaddress=0.0.0.0 connectport=9090 connectaddress=$ip; New-NetFirewallRule -DisplayName \"Shidhin_Assestment: WSL Port 9090\" -Direction Inbound -LocalPort 9090 -Protocol TCP -Action Allow' -Verb RunAs"
+    ip=$(hostname -I | awk '{print $1}')
+    powershell.exe -Command "Start-Process powershell -ArgumentList \"netsh interface portproxy add v4tov4 listenport=9090 listenaddress=0.0.0.0 connectport=9090 connectaddress=$ip; New-NetFirewallRule -DisplayName 'Shidhin_Assestment: WSL Port 9090' -Direction Inbound -LocalPort 9090 -Protocol TCP -Action Allow\" -Verb RunAs"
     open_wsl_terminal
 else
     echo "Running Phase 2"
