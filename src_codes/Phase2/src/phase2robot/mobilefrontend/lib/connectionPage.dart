@@ -41,13 +41,18 @@ class _ConnectionpageState extends State<Connectionpage> {
       channel.sink.add(jsonMessage);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text("Message Sent!"),
-          duration: Duration(seconds: 2),
+          backgroundColor: Colors.greenAccent,
+          content: Center(child: Text("Message Sent!")),
+          duration: Duration(milliseconds: 1500),
         ),
       );
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Error $e"), duration: Duration(seconds: 2)),
+        SnackBar(
+          backgroundColor: Colors.orangeAccent,
+          content: Center(child: Text("Error $e")),
+          duration: Duration(milliseconds: 1500),
+        ),
       );
     }
   }
@@ -57,23 +62,37 @@ class _ConnectionpageState extends State<Connectionpage> {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
+          final movearmTrimer = _moveArm.text.isNotEmpty
+              ? _moveArm.text.split(RegExp(r'[,\s]+'))
+              : [];
+          final movetoTrimer = _moveto.text.isNotEmpty
+              ? _moveto.text.split(RegExp(r'[,\s]'))
+              : [];
+          if (movearmTrimer.isNotEmpty && movearmTrimer.last == "") {
+            movearmTrimer.removeLast();
+          } else if (movetoTrimer.isNotEmpty && movetoTrimer.last == "") {
+            movetoTrimer.removeLast();
+          }
           if ((_moveArm.text.isNotEmpty ^ _moveto.text.isNotEmpty) &&
-              ((_moveArm.text.isNotEmpty && _moveArm.text.length > 6) ||
-                  (_moveto.text.isNotEmpty && _moveto.text.length > 4))) {
-            _moveArm.text =
-                (_moveArm.text.isNotEmpty && _moveArm.text.length != 6)
-                ? _moveArm.text.substring(0, 7)
-                : _moveArm.text;
-            _moveto.text = (_moveto.text.isNotEmpty && _moveto.text.length != 5)
-                ? _moveto.text.substring(0, 5)
-                : _moveto.text;
+              ((_moveArm.text.isNotEmpty && movearmTrimer.length >= 4) ||
+                  (_moveto.text.isNotEmpty && movetoTrimer.length >= 3))) {
+            setState(() {
+              _moveArm.text = _moveArm.text.isNotEmpty
+                  ? "${movearmTrimer[0]},${movearmTrimer[1]},${movearmTrimer[2]},${movearmTrimer[3]}"
+                  : "";
+              _moveto.text = _moveto.text.isNotEmpty
+                  ? "${movetoTrimer[0]},${movetoTrimer[1]},${movetoTrimer[2]}"
+                  : "";
+            });
             final String command = _moveto.text.isNotEmpty
-                ? "move to|${_moveto.text.trim()}"
-                : "move arm|${_moveArm.text.trim()}";
+                ? "move to|${movetoTrimer[0]}, ${movetoTrimer[1]}, ${movetoTrimer[2]}"
+                : "move arm|${movearmTrimer[0]}, ${movearmTrimer[1]}, ${movearmTrimer[2]}, ${movearmTrimer[3]}";
             sendRos(command);
           } else {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
+                backgroundColor: Colors.orangeAccent,
+                duration: Duration(milliseconds: 1500),
                 content: Center(
                   child: Text(
                     "Enter Data to One of the Fields, and Give exact required values",
@@ -93,7 +112,18 @@ class _ConnectionpageState extends State<Connectionpage> {
               channel.sink.close();
               context.read<TextProvider>().setChannelChecker(false);
               ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Center(child: Text("Session Closed"))),
+                SnackBar(
+                  backgroundColor: Colors.lightBlueAccent,
+                  duration: Duration(milliseconds: 1500),
+                  content: Center(
+                    child: Center(
+                      child: Text(
+                        "Session Closed",
+                        style: TextStyle(color: Colors.brown),
+                      ),
+                    ),
+                  ),
+                ),
               );
               Navigator.of(
                 context,
@@ -201,7 +231,7 @@ class _AnimatedLabelTextFieldState extends State<AnimatedLabelTextField> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         AnimatedDefaultTextStyle(
-          duration: Duration(milliseconds: 400),
+          duration: Duration(milliseconds: 1500),
           style: TextStyle(
             fontSize: _hasFocus ? 20 : 16,
             fontWeight: _hasFocus ? FontWeight.w700 : FontWeight.w500,

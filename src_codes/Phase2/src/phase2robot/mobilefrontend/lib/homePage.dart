@@ -70,6 +70,7 @@ class _HomepageState extends State<Homepage> {
                           if (context.read<TextProvider>().checker) {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
+                                duration: Duration(milliseconds: 1500 ),
                                 backgroundColor: Colors.lightGreenAccent,
                                 content: Center(
                                   child: Text(
@@ -84,6 +85,7 @@ class _HomepageState extends State<Homepage> {
                           } else {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
+                                duration: Duration(milliseconds: 1500),
                                 backgroundColor: Colors.orangeAccent,
                                 content: Center(
                                   child: Text(
@@ -101,7 +103,7 @@ class _HomepageState extends State<Homepage> {
                             SnackBar(
                               backgroundColor: Colors.orangeAccent,
                               content: Center(child: Text("Enter IP Address")),
-                              duration: Duration(seconds: 2),
+                              duration: Duration(milliseconds: 1500),
                             ),
                           );
                         }
@@ -133,7 +135,7 @@ class _HomepageState extends State<Homepage> {
                     SnackBar(
                       backgroundColor: Colors.orangeAccent,
                       content: Center(child: Text("Connect to IP.")),
-                      duration: Duration(seconds: 2),
+                      duration: Duration(milliseconds: 1500),
                     ),
                   );
                 }
