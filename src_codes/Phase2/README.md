@@ -37,3 +37,7 @@ In this folder, there will be a folder named apk, that apk can be downloaded and
 ## Reference 
 <img width="2147" height="1521" alt="image" src="https://github.com/user-attachments/assets/e97f9ce4-d827-40e8-b0e9-1916081cf42e" />
 
+# Demo
+![Phase2_V1](https://github.com/user-attachments/assets/837143d6-d66c-4b32-8c9c-266657cf7bc0)
+
+
