@@ -71,3 +71,4 @@ CATKIN_IGNORE
 
 !/src_codes/Phase2/src/phase2robot/mobilefrontend/**
 !/src_codes/Phase3/src/phase3srv/src/pahse3cliser/phase3frontend/**
+!/src_codes/Phase3/src/phase3srv/src/phase3clientserver/src/phase3clientserver/phase3frontend/**

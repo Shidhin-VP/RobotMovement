@@ -9,7 +9,8 @@ class Phase3Server(Node):
         self.get_logger().info("Phase 3 Server Started and Ready")
 
     def handle_incomming(self,request,response):
-        self.get_logger().info(f"\033[96Command Received\033[0m")
+        print(f"Request: {request}")
+        self.get_logger().info(f"\033[96mCommand Received\033[0m")
         if request.command=="move to":
             self.get_logger().info(f"\033[92mMoving to: {request.x}, {request.y}, {request.z}\033[0m")
             response.success=True
