@@ -1,0 +1,27 @@
+from setuptools import find_packages, setup
+
+package_name = 'phase3clientserver'
+
+setup(
+    name=package_name,
+    version='0.0.0',
+    packages=find_packages(exclude=['test']),
+    data_files=[
+        ('share/ament_index/resource_index/packages',
+            ['resource/' + package_name]),
+        ('share/' + package_name, ['package.xml']),
+    ],
+    install_requires=['setuptools'],
+    zip_safe=True,
+    maintainer='svp',
+    maintainer_email='svp@todo.todo',
+    description='TODO: Package description',
+    license='TODO: License declaration',
+    tests_require=['pytest'],
+    entry_points={
+        'console_scripts': [
+            'phase3service=phase3clientserver.phase3server:main',
+            'phase3client=phase3clientserver.phase3client:main'
+        ],
+    },
+)

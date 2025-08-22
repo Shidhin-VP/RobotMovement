@@ -1,8 +1,0 @@
-string command
-int64 x
-int64 y
-int64 z
-int64 w
----
-bool success
-string message
