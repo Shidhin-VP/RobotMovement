@@ -24,3 +24,6 @@ I have created a **runPhase1.sh** file, which will automate all the manual workf
   2. **moVe ArM** follows the same process as above.
   3. Take's Integer, **1**, **2** or **3** for respective to **move to**, **Move Arm**, **Emergency Abort** or **EA**.
   4.  Can give the commands straight as **Move To 1,2,3**, **Move arM 0.5,2,2,0.5**, and **Emergency Abort** or **EA**
+
+# Demo
+![Phase1Gif_V1](https://github.com/user-attachments/assets/355d085c-c326-4400-9d7e-5a7bb6ac3539)
